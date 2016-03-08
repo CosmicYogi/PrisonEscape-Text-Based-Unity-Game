@@ -2,4 +2,4 @@
 
 This is a simple text based prisong escape game
 
-![Prison Escape](/Assets/prison word.png)
+![Prison Escape](/Assets/ScreenShot.png)
