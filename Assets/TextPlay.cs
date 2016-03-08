@@ -5,7 +5,9 @@ using UnityEngine.UI;
 public class TextPlay : MonoBehaviour {
 
 	public Text text;
-	private enum States{cell,sheet_0,mirror,lock_0,cell_mirror,sheet_1,lock_1,freedom};
+	private enum States{cell,sheet_0,mirror,lock_0,cell_mirror,sheet_1,lock_1,freedom,
+							coridoor_0
+								};
 	private States myState;
 	// Use this for initialization
 	void Start () {
@@ -30,8 +32,10 @@ public class TextPlay : MonoBehaviour {
 			state_Sheet_1 ();
 		} else if (myState == States.lock_1) {
 			state_Lock_1 ();
-		} else if (myState == States.freedom){
+		} else if (myState == States.freedom) {
 			state_Freedom ();
+		} else if (myState == States.coridoor_0) {
+			state_Coridoor_0 ();
 		}
 
 	}
@@ -91,7 +95,7 @@ public class TextPlay : MonoBehaviour {
 			" the buttons. YOu press the dirty buttons and hear the click \n \n"+
 			"Press O to open or,Press R to return to cell";
 		if (Input.GetKeyDown (KeyCode.O)) {
-			myState = States.freedom;
+			myState = States.coridoor_0;
 		}
 		else if (Input.GetKeyDown (KeyCode.R)) {
 			myState = States.cell_mirror;
@@ -117,5 +121,9 @@ public class TextPlay : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.P)){
 		myState = States.freedom;
 		}
+	}
+	void state_Coridoor_0(){
+		text.text = "reached coridoor 0";
+		myState = States.coridoor_0;
 	}
 }
