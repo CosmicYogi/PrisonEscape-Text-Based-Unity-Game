@@ -131,7 +131,7 @@ public class TextPlay : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.S)) {
 			myState = States.sheet_1;
 		}
-		if (Input.GetKeyDown(KeyCode.L))
+		else if (Input.GetKeyDown(KeyCode.L))
 			{
 			myState = States.lock_1;
 			}
@@ -180,7 +180,7 @@ public class TextPlay : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.R)) {
 			Coridoor_0 ();
 		}
-		if (Input.GetKeyDown (KeyCode.H)) {
+		else if (Input.GetKeyDown (KeyCode.H)) {
 			coridoor_1 ();
 		}
 
@@ -205,7 +205,7 @@ public class TextPlay : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.S)){
 			stairs_1();
 		}
-		if (Input.GetKeyDown (KeyCode.P)) {
+		else if (Input.GetKeyDown (KeyCode.P)) {
 			inCloset ();
 		}
 	}
@@ -228,7 +228,7 @@ public class TextPlay : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.D)) {
 			coridoor_3 ();
 		}
-		if (Input.GetKeyDown (KeyCode.R)) {
+		else if (Input.GetKeyDown (KeyCode.R)) {
 			coridoor_2 ();
 		}
 	}
@@ -263,7 +263,7 @@ public class TextPlay : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.S)) {
 			courtyard ();
 		}
-		if (Input.GetKeyDown (KeyCode.U)) {
+		else if (Input.GetKeyDown (KeyCode.U)) {
 			inCloset ();
 		}
 	}
@@ -277,9 +277,6 @@ public class TextPlay : MonoBehaviour {
 			myState = States.cell;
 		}
 	}
-
 }
-	
-
 //Programmed with love by MITESH SONI.
 //Please feel free to contribute if you want to something even a new story is worth.
