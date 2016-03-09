@@ -7,7 +7,8 @@ public class TextPlay : MonoBehaviour {
 	public Text text;
 	private enum States{cell,sheet_0,mirror,lock_0,cell_mirror,sheet_1,lock_1,freedom,
 							coridoor_0,
-							stairs_0,closet_door,floor,coridoor_1,stairs_1,in_closet,coridoor_2,stairs_2,coridoor_3,courtyard
+							stairs_0,closet_door,floor,coridoor_1,stairs_1,in_closet,coridoor_2,stairs_2,coridoor_3,courtyard,
+								gameOver
 								};
 	private States myState;
 
@@ -17,6 +18,7 @@ public class TextPlay : MonoBehaviour {
 	public Time temp;
 	public int maxTime=30;
 	int timeRemaining;
+	int tempAdder=0;
 
 	// Use this for initialization
 	void Start () {
@@ -65,8 +67,26 @@ public class TextPlay : MonoBehaviour {
 			coridoor_3 ();
 		} else if (myState == States.courtyard) {
 			courtyard ();
+		} else if (myState == States.gameOver) {
+			gameOver ();
+		}
+			
+
+		// Timer Programming Starts from Here
+
+		ftime = UnityEngine.Time.time;
+		timeo = (int)ftime;
+		timeRemaining = maxTime - timeo+ tempAdder;
+		if (timeRemaining == 0) {
+			myState = States.gameOver;
+			tempAdder = Mathf.Abs (timeo);
+			//tempAdder = tempAdder + maxTime + Mathf.Abs(timeRemaining);
+		} else {
+			print (timeo);
+			texttime.text = timeRemaining + " : Seconds to Break Out of Prison";
 		}
 
+		//Timer Programming Ends Here
 	}
 	void Cell(){
 		text.text = "You are in a prison cell and you want to escape, There are some dirty sheets" +
@@ -285,13 +305,19 @@ public class TextPlay : MonoBehaviour {
 			myState = States.cell;
 		}
 	}
-	void FixedUpdate(){
-		ftime = UnityEngine.Time.time;
-		timeo = (int)ftime;
-		timeRemaining = maxTime - timeo;
 
-		print (timeo);
-		texttime.text =  timeRemaining + " : Seconds to do something";
+	void gameOver(){
+		text.text = "GAME OVER" +
+		"\n\n" +
+		"Press P to play again";
+		if (Input.GetKeyDown (KeyCode.P)) {
+			myState = States.cell;
+			tempAdder = Mathf.Abs (timeo);
+			//tempAdder = tempAdder + maxTime;
+		}
+	}
+	void FixedUpdate(){
+
 	}
 }
 //Programmed with love by MITESH SONI.
