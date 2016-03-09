@@ -10,6 +10,14 @@ public class TextPlay : MonoBehaviour {
 							stairs_0,closet_door,floor,coridoor_1,stairs_1,in_closet,coridoor_2,stairs_2,coridoor_3,courtyard
 								};
 	private States myState;
+
+	public Text texttime;
+	private float ftime;
+	private int timeo;
+	public Time temp;
+	public int maxTime=30;
+	int timeRemaining;
+
 	// Use this for initialization
 	void Start () {
 		myState = States.cell;
@@ -276,6 +284,14 @@ public class TextPlay : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.P)) {
 			myState = States.cell;
 		}
+	}
+	void FixedUpdate(){
+		ftime = UnityEngine.Time.time;
+		timeo = (int)ftime;
+		timeRemaining = maxTime - timeo;
+
+		print (timeo);
+		texttime.text =  timeRemaining + " : Seconds to do something";
 	}
 }
 //Programmed with love by MITESH SONI.

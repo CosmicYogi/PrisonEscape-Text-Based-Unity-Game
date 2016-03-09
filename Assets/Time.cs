@@ -15,11 +15,18 @@ public class Time : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		ftime = (UnityEngine.Time.time);
-		timeo += (int)ftime;
+//		ftime = (UnityEngine.Time.time);
+//		timeo += (int)ftime;
+//		print (timeo);
+//		text.text = "" + timeo;
+	}
+	void FixedUpdate(){
+		ftime = UnityEngine.Time.time;
+		timeo = (int)ftime;
+
+
 		print (timeo);
 		text.text = "" + timeo;
 	}
-
 
 }
