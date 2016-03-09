@@ -77,13 +77,25 @@ public class TextPlay : MonoBehaviour {
 		ftime = UnityEngine.Time.time;
 		timeo = (int)ftime;
 		timeRemaining = maxTime - timeo+ tempAdder;
-		if (timeRemaining == 0) {
-			myState = States.gameOver;
+		if (myState == States.courtyard) {
+			texttime.text = "GAME COMPLETED !!!";
 			tempAdder = Mathf.Abs (timeo);
-			//tempAdder = tempAdder + maxTime + Mathf.Abs(timeRemaining);
-		} else {
-			print (timeo);
-			texttime.text = timeRemaining + " : Seconds to Break Out of Prison";
+
+
+		}
+		else if (myState == States.gameOver) {
+			texttime.text = "GAME OVER";
+			tempAdder = Mathf.Abs (timeo);
+		}
+		else {
+			if (timeRemaining == 0) {
+				myState = States.gameOver;
+				tempAdder = Mathf.Abs (timeo);
+				//tempAdder = tempAdder + maxTime + Mathf.Abs(timeRemaining);
+			} else {
+				print (timeo);
+				texttime.text = timeRemaining + " : Seconds to Break Out of Prison";
+			}
 		}
 
 		//Timer Programming Ends Here
@@ -312,8 +324,8 @@ public class TextPlay : MonoBehaviour {
 		"Press P to play again";
 		if (Input.GetKeyDown (KeyCode.P)) {
 			myState = States.cell;
-			tempAdder = Mathf.Abs (timeo);
-			//tempAdder = tempAdder + maxTime;
+			//tempAdder = Mathf.Abs (timeo);
+
 		}
 	}
 	void FixedUpdate(){
